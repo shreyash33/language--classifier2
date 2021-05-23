@@ -67,7 +67,7 @@ def register():
         name = request.form['name']
         password = request.form['password']
         new_user = User(name = name,password = password)
-        if not db.session.query(User).filter(User.name == name).count():
+        if db.session.query(User).filter(User.name == name).count():
             msg = 'Account already exists !'
         elif not name or not password:
             msg = 'Please fill out the form !'
