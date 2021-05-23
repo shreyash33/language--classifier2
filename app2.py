@@ -20,7 +20,7 @@ vectorizer = pickle.load(open('vectorizer.pkl','rb'))
 app2.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vygpczmfkdvota:15966179b44c2d3c80f34d4002c76738ab965f4b4a51828c0d838aa48efbf134@ec2-3-212-75-25.compute-1.amazonaws.com:5432/d7pvq0c8n13r99'
 app2.config['SECRET_KEY'] = "Shreyash"
 
-db = SQLAlchemy(app)
+db = SQLAlchemy(app2)
 
 class User(db.Model):
    id = db.Column('student_id', db.Integer, primary_key = True)
