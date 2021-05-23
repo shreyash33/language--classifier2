@@ -28,9 +28,12 @@ class User(db.Model):
    name = db.Column(db.String(100))
    password = db.Column(db.String(50))
 
-def __init__(self, name, password):
-   self.name = name
-   self.password = password
+   def __init__(self, name, password):
+       self.name = name
+       self.password = password
+    
+db.create_all()
+db.session.commit()
 
 @app2.route('/')
 @app2.route('/login', methods =['GET', 'POST'])
@@ -91,5 +94,4 @@ def predict():
     
 
 if __name__ == "__main__":
-    db.create_all()
     app2.run(debug=True)
