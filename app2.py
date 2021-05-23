@@ -17,7 +17,7 @@ app2 = Flask(__name__)
 f = bz2.BZ2File('model.pkl','rb')
 model = pickle.load(f)
 vectorizer = pickle.load(open('vectorizer.pkl','rb'))
-app2.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vygpczmfkdvota:15966179b44c2d3c80f34d4002c76738ab965f4b4a51828c0d838aa48efbf134@ec2-3-212-75-25.compute-1.amazonaws.com:5432/d7pvq0c8n13r99'
+app2.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vygpczmfkdvota:15966179b44c2d3c80f34d4002c76738ab965f4b4a51828c0d838aa48efbf134@ec2-3-212-75-25.compute-1.amazonaws.com:5432/d7pvq0c8n13r99'
 app2.config['SECRET_KEY'] = "Shreyash"
 
 db = SQLAlchemy(app2)
