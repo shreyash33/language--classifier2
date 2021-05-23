@@ -45,8 +45,8 @@ def login():
         data = User.query.filter_by(name=name, password=password).first()
         if data:
             session['loggedin'] = True
-            session['id'] = data['id']
-            session['name'] = data['name']
+            session['id'] = data.id
+            session['name'] = data.name
             msg = 'Logged in successfully !'
             return render_template('index.html', msg = msg)
         else:
