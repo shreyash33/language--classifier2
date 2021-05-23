@@ -91,4 +91,5 @@ def predict():
     
 
 if __name__ == "__main__":
+    db.create_all()
     app2.run(debug=True)
