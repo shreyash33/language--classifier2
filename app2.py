@@ -31,8 +31,8 @@ def __init__(self, name, password):
    self.name = name
    self.password = password
 
-@app.route('/')
-@app.route('/login', methods =['GET', 'POST'])
+@app2.route('/')
+@app2.route('/login', methods =['GET', 'POST'])
 def login():
     msg = ''
     if request.method == 'POST' and 'name' in request.form and 'password' in request.form:
@@ -49,14 +49,14 @@ def login():
             msg = 'Incorrect name / password !'
     return render_template('login.html', msg = msg)
 
-@app.route('/logout')
+@app2.route('/logout')
 def logout():
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('name', None)
     return redirect(url_for('login'))
 
-@app.route('/register', methods =['GET', 'POST'])
+@app2.route('/register', methods =['GET', 'POST'])
 def register():
     msg = ''
     if request.method == 'POST' and 'name' in request.form and 'password' in request.form :
@@ -76,7 +76,7 @@ def register():
     return render_template('register.html', msg = msg)
 
 
-@app.route('/predict',methods=['POST'])
+@app2.route('/predict',methods=['POST'])
 def predict():
     
     text = str(request.form.values)
