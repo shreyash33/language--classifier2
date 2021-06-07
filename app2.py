@@ -20,7 +20,7 @@ model = pickle.load(f)
 vectorizer = pickle.load(open('vectorizer.pkl','rb'))
 app2.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vygpczmfkdvota:15966179b44c2d3c80f34d4002c76738ab965f4b4a51828c0d838aa48efbf134@ec2-3-212-75-25.compute-1.amazonaws.com:5432/d7pvq0c8n13r99'
 app2.config['SECRET_KEY'] = "Shreyash"
-publicKey, privateKey = rsa.newkeys(512)
+publicKey, privateKey = rsa.newkeys(256)
 
 db = SQLAlchemy(app2)
 
@@ -44,8 +44,8 @@ def login():
     if request.method == 'POST' and 'name' in request.form and 'password' in request.form:
         name = request.form['name']
         password = request.form['password']
-        name = rsa.encrypt(name.encode(),publicKey)
-        password = rsa.encrypt(password.encode(),publicKey)
+        name = str(rsa.encrypt(name.encode(),publicKey))
+        password = str(rsa.encrypt(password.encode(),publicKey))
         data = User.query.filter_by(name=name, password=password).first()
         if data:
             session['loggedin'] = True
@@ -70,8 +70,8 @@ def register():
     if request.method == 'POST' and 'name' in request.form and 'password' in request.form :
         name = request.form['name']
         password = request.form['password']
-        name = rsa.encrypt(name.encode(),publicKey)
-        password = rsa.encrypt(password.encode(),publicKey)
+        name = str(rsa.encrypt(name.encode(),publicKey))
+        password = str(rsa.encrypt(password.encode(),publicKey))
         new_user = User(name = name,password = password)
         if db.session.query(User).filter(User.name == name).count():
             msg = 'Account already exists !'
