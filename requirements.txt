@@ -6,3 +6,4 @@ pickle4==0.0.1
 Flask-SQLAlchemy==2.5.1
 psycopg2==2.8.6
 postgres==3.0.0
+rsa==4.7.2
