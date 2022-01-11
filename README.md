@@ -1,2 +1,2 @@
 # language--classifier2
-This is the same lnguage classifier but deployed on Heroku Cloud Platform.
+This is the same language classifier but deployed on Heroku Cloud Platform.
